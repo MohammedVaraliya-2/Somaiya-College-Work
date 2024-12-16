@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const ribbon = document.getElementById("ribbon");
   const logo = document.getElementById("logo");
   const fireworksContainer = document.getElementById("fireworks");
+  const loginPage = document.getElementById("login-page");
+
+  const clapAudio = new Audio(
+    "assets/audios/mixkit-small-crowd-clapping-3035.wav"
+  );
 
   ribbon.addEventListener("click", (event) => {
     const ribbonRect = ribbon.getBoundingClientRect();
@@ -25,19 +30,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ribbon.style.display = "none";
 
-    leftHalf.style.animation = "slideLeft 2s forwards";
-    rightHalf.style.animation = "slideRight 2s forwards";
+    leftHalf.style.animation = "slideLeft 3s forwards";
+    rightHalf.style.animation = "slideRight 3s forwards";
+
+    setTimeout(() => {
+      logo.classList.add("centered");
+
+      // After the animation duration (2 seconds), redirect to the login page
+      setTimeout(() => {
+        window.location.href = "https://progression.quarkideas.com/login"; // Redirect to the login page
+      }, 2000); // 2000ms is the duration of the logo animation (adjust if needed)
+    }, 3000); // Adjust to match ribbon animation duration
 
     setTimeout(() => {
       leftHalf.remove();
       rightHalf.remove();
-    }, 2000);
+    }, 3000);
 
     startFireworks(event.clientX, event.clientY);
 
+    clapAudio.play();
+    setTimeout(() => {
+      clapAudio.pause();
+      clapAudio.currentTime = 0;
+    }, 2500);
+
     setTimeout(() => {
       logo.classList.add("centered");
-    }, 1000);
+    }, 2000);
   });
 
   function startFireworks(x, y) {
