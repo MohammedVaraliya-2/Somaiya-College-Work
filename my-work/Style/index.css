@@ -25,7 +25,7 @@ body {
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%) scale(0.5); /* Start smaller at the center */
-  opacity: 0.5; /* Initial opacity */
+  opacity: 0; /* Initial opacity */
   width: 50%; /* Adjust size as needed */
   transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1), opacity 2s ease-in-out;
   will-change: transform, opacity, top, left;
